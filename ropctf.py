@@ -3,15 +3,18 @@ from discord.ext.commands import Bot
 from discord.ext import commands
 import os
 import sys
+import asyncio
 
 import help_info
 import config_vars
 
-client = discord.Client()
-bot = commands.Bot(command_prefix=">", allowed_mentions = discord.AllowedMentions(everyone = False, users=False, roles=False))
+intents = discord.Intents().all()
+intents.members = True
+
+client = discord.Client(intents=intents)
+bot = commands.Bot(command_prefix=">",intents=intents, allowed_mentions = discord.AllowedMentions(everyone = False, users=False, roles=False))
 # The default help command is removed so a custom one can be added.
 bot.remove_command('help')
-
 # Each extension corresponds to a file within the cogs directory.  Remove from the list to take away the functionality.
 extensions = ['ctf', 'ctftime', 'configuration', 'encoding', 'cipher', 'utility']
 # List of names reserved for those who gave cool ideas or reported something interesting.
@@ -100,11 +103,16 @@ async def amicool(ctx):
         await ctx.send('lolno')
         await ctx.send('Psst, kid.  Want to be cool?  Find an issue and report it or request a feature!')
 
-if __name__ == '__main__':
+async def setup():
+    print('Loading cogs...')
     sys.path.insert(1, os.getcwd() + '/cogs/')
     for extension in extensions:
         try:
-            bot.load_extension(extension)
+            await bot.load_extension(extension)
         except Exception as e:
             print(f'Failed to load cogs : {e}')
+
+
+if __name__ == '__main__':
+    asyncio.run(setup())
     bot.run(config_vars.discord_token)

@@ -16,7 +16,7 @@ bot = commands.Bot(command_prefix=">",intents=intents, allowed_mentions = discor
 # The default help command is removed so a custom one can be added.
 bot.remove_command('help')
 # Each extension corresponds to a file within the cogs directory.  Remove from the list to take away the functionality.
-extensions = ['ctf', 'ctftime', 'configuration', 'encoding', 'cipher', 'utility', 'writeups']
+extensions = ['ctf', 'ctftime', 'configuration', 'encoding', 'cipher', 'utility']
 # List of names reserved for those who gave cool ideas or reported something interesting.
     # please don't spam me asking to be added.  if you send something interesting to me i will add you to the list.
 # If your name is in the list and you use the command '>amicool' you'll get a nice message.
@@ -44,10 +44,6 @@ async def help(ctx, page=None):
         emb = discord.Embed(description=help_info.config_help, colour=4387968)
         emb.set_author(name='Configuration Help')
 
-    elif page == 'writeups':
-        emb = discord.Embed(description=help_info.writeups_help, colour=4387968)
-        emb.set_author(name='Writeups Help')
-
     elif page == 'utility':
         emb = discord.Embed(description=help_info.utility_help, colour=4387968)
         emb.set_author(name='Utilities Help')
@@ -56,13 +52,7 @@ async def help(ctx, page=None):
         emb = discord.Embed(description=help_info.help_page, colour=4387968)
         emb.set_author(name='NullCTF Help')
 
-    await attach_embed_info(ctx, emb)
     await ctx.channel.send(embed=emb)
-
-
-async def attach_embed_info(ctx=None, embed=None):
-    embed.set_thumbnail(url=f'{bot.user.avatar_url}')
-    return embed
 
 @bot.command()
 async def source(ctx):

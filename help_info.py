@@ -96,9 +96,6 @@ info for all ctftime commands
 `>help ctf`
 info for all ctf commands
 
-`>help writeups`
-info for ctf writeup search command 
-
 `>help config`
 bot configuration info
 
@@ -108,11 +105,5 @@ everything else! (basically misc)
 `>report/request "an issue or feature"`
 report an issue, or request a feature for NullCTF, if it is helpful your name will be added to the 'cool names' list!
 '''
-
-writeups_help = '''
->writeups <query string>`
-search for CTF writeups based on the provided query string. Double quotes can be used to require an exact match fo rall or part of a query. Likewise, a minus sign can be added to remove specified results.
-'''
-
 
 src = "https://github.com/fepfitra/r0p_CTF"

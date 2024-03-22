@@ -104,7 +104,6 @@ async def amicool(ctx):
         await ctx.send('Psst, kid.  Want to be cool?  Find an issue and report it or request a feature!')
 
 async def setup():
-    print('Loading cogs...')
     sys.path.insert(1, os.getcwd() + '/cogs/')
     for extension in extensions:
         try:

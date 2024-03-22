@@ -93,9 +93,6 @@ help_page = '''
 `>help ctftime`
 info for all ctftime commands
 
-`>help ctf`
-info for all ctf commands
-
 `>help config`
 bot configuration info
 
@@ -105,5 +102,8 @@ everything else! (basically misc)
 `>report/request "an issue or feature"`
 report an issue, or request a feature for NullCTF, if it is helpful your name will be added to the 'cool names' list!
 '''
+# `>help ctf`
+# info for all ctf commands
+
 
 src = "https://github.com/fepfitra/r0p_CTF"
